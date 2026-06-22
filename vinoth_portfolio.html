@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinothkumar S — Java Backend Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080d1a;
+  --bg2:#0e1628;
+  --bg3:#141e33;
+  --teal:#00d4aa;
+  --teal2:#00b891;
+  --blue:#4a9eff;
+  --text:#e8edf5;
+  --muted:#8896a8;
+  --border:#1e2d47;
+  --card:#0e1628;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-family:'IBM Plex Mono',monospace;color:var(--teal);font-size:14px;font-weight:500;text-decoration:none}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:400;transition:color 0.2s}
+.nav-links a:hover{color:var(--teal)}
+.nav-cta{background:var(--teal);color:#080d1a;padding:6px 16px;border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--teal2)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,212,170,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-eyebrow{font-family:'IBM Plex Mono',monospace;color:var(--teal);font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem}
+.hero-name{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:600;line-height:1.1;margin-bottom:0.5rem}
+.hero-name span{color:var(--teal)}
+.hero-role{font-size:1.1rem;color:var(--muted);font-weight:300;margin-bottom:1.5rem}
+.hero-summary{color:#b0bdc9;line-height:1.8;margin-bottom:2rem;font-size:14.5px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--teal);color:#080d1a;padding:10px 24px;border-radius:4px;font-weight:600;font-size:14px;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary:hover{background:var(--teal2);transform:translateY(-1px)}
+.btn-outline{border:1px solid var(--border);color:var(--text);padding:10px 24px;border-radius:4px;font-weight:500;font-size:14px;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+.hero-right{display:flex;flex-direction:column;gap:12px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem;display:flex;align-items:center;gap:1rem}
+.stat-icon{width:40px;height:40px;background:rgba(0,212,170,0.1);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.stat-num{font-size:1.5rem;font-weight:600;color:var(--teal);line-height:1}
+.stat-label{font-size:12px;color:var(--muted);margin-top:2px}
+.availability{margin-top:4px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--teal)}
+.dot{width:8px;height:8px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-family:'IBM Plex Mono',monospace;color:var(--teal);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.5rem}
+.section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;margin-bottom:0.5rem}
+.section-sub{color:var(--muted);font-size:14px;margin-bottom:3rem}
+.divider{height:1px;background:var(--border);margin:0}
+
+/* WHY HIRE ME */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.why-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.5rem;transition:border-color 0.2s}
+.why-card:hover{border-color:var(--teal)}
+.why-icon{font-size:24px;margin-bottom:0.8rem}
+.why-title{font-weight:600;font-size:15px;margin-bottom:0.4rem;color:var(--text)}
+.why-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.skill-category{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.4rem}
+.skill-cat-title{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--teal);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.skill-tag{background:var(--bg3);border:1px solid var(--border);color:#b0bdc9;font-size:12px;padding:4px 10px;border-radius:4px;font-family:'IBM Plex Mono',monospace}
+.skill-tag.hot{border-color:rgba(0,212,170,0.3);color:var(--teal);background:rgba(0,212,170,0.05)}
+
+/* EXPERIENCE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:2.5rem}
+.tl-dot{position:absolute;left:-2.4rem;top:6px;width:12px;height:12px;background:var(--teal);border-radius:50%;border:2px solid var(--bg)}
+.tl-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem}
+.tl-title{font-weight:600;font-size:15px}
+.tl-company{color:var(--teal);font-size:14px;margin-bottom:0.2rem}
+.tl-date{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);background:var(--bg2);border:1px solid var(--border);padding:2px 10px;border-radius:4px;white-space:nowrap}
+.tl-bullets{margin-top:0.8rem;padding-left:1rem}
+.tl-bullets li{color:#b0bdc9;font-size:13.5px;margin-bottom:0.4rem;line-height:1.6}
+.tl-bullets li::marker{color:var(--teal)}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.2rem}
+.proj-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.6rem;transition:all 0.2s;position:relative;overflow:hidden}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--blue));opacity:0;transition:opacity 0.2s}
+.proj-card:hover{border-color:rgba(0,212,170,0.3);transform:translateY(-2px)}
+.proj-card:hover::before{opacity:1}
+.proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem}
+.proj-title{font-weight:600;font-size:15px}
+.proj-year{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)}
+.proj-tech{display:flex;flex-wrap:wrap;gap:5px;margin:0.8rem 0}
+.proj-tech span{background:var(--bg3);border:1px solid var(--border);color:var(--muted);font-size:11px;padding:2px 8px;border-radius:3px;font-family:'IBM Plex Mono',monospace}
+.proj-bullets{padding-left:1rem;margin-top:0.6rem}
+.proj-bullets li{font-size:13px;color:#b0bdc9;margin-bottom:0.35rem;line-height:1.5}
+.proj-bullets li::marker{color:var(--teal)}
+.proj-link{display:inline-flex;align-items:center;gap:4px;color:var(--teal);font-size:12px;text-decoration:none;margin-top:1rem;font-family:'IBM Plex Mono',monospace}
+.proj-link:hover{text-decoration:underline}
+.proj-metric{display:inline-flex;align-items:center;gap:5px;background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);color:var(--teal);font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;margin-bottom:0.5rem}
+
+/* EDUCATION & CERTS */
+.edu-cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.edu-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.5rem}
+.edu-degree{font-weight:600;font-size:15px;margin-bottom:0.3rem}
+.edu-school{color:var(--teal);font-size:13.5px;margin-bottom:0.3rem}
+.edu-detail{color:var(--muted);font-size:13px}
+.edu-cgpa{font-family:'IBM Plex Mono',monospace;font-size:1.4rem;font-weight:500;color:var(--teal);margin-top:0.8rem}
+.cert-list{display:flex;flex-direction:column;gap:0.8rem}
+.cert-item{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:10px 14px}
+.cert-badge{width:32px;height:32px;background:rgba(0,212,170,0.1);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.cert-name{font-size:13px;font-weight:500}
+.cert-issuer{font-size:11px;color:var(--muted)}
+
+/* CAREER GOALS */
+.goals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.goal-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.3rem;border-left:3px solid var(--teal)}
+.goal-timeframe{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem}
+.goal-text{font-size:13.5px;color:#b0bdc9;line-height:1.6}
+
+/* CONTACT */
+.contact-section{background:var(--bg);border-top:1px solid var(--border)}
+.contact-hero{text-align:center;margin-bottom:3rem}
+.contact-big-email{display:inline-flex;align-items:center;gap:10px;font-size:clamp(1rem,2.5vw,1.4rem);font-weight:500;color:var(--teal);text-decoration:none;border:1px solid rgba(0,212,170,0.3);border-radius:8px;padding:14px 28px;transition:all 0.2s;background:rgba(0,212,170,0.04);margin-bottom:1rem}
+.contact-big-email:hover{background:rgba(0,212,170,0.1);border-color:var(--teal);transform:translateY(-2px)}
+.contact-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:2.5rem}
+.contact-pill{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:1px solid var(--border);border-radius:999px;padding:8px 18px;font-size:13px;color:var(--text);transition:all 0.2s;background:var(--bg2)}
+.contact-pill:hover{border-color:var(--teal);color:var(--teal);background:rgba(0,212,170,0.05)}
+.contact-pill-icon{font-size:15px}
+.contact-divider{height:1px;background:var(--border);margin:2rem 0}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.contact-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.4rem 1rem;background:var(--bg2);text-decoration:none;transition:background 0.2s;gap:6px;text-align:center}
+.contact-cell:hover{background:var(--bg3)}
+.contact-cell-icon{font-size:22px}
+.contact-cell-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.contact-cell-value{font-size:12.5px;font-weight:500;color:var(--text);word-break:break-all}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem;color:var(--muted);font-size:12px;font-family:'IBM Plex Mono',monospace}
+footer span{color:var(--teal)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero-right{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .edu-cert-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Vinothkumar S</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:vinothvino0518@gmail.com">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">// Java Backend Developer</div>
+      <h1 class="hero-name">Vinothkumar <span>S</span></h1>
+      <p class="hero-role">Spring Boot · Microservices · PostgreSQL · NLP</p>
+      <p class="hero-summary">
+        Fresh B.E. graduate building production-grade backend systems. Engineered an AI-powered Resume Analyzer using TF-IDF and Cosine Similarity, and a 5-service E-Commerce Microservices platform with Spring Cloud — both live on GitHub. Trained at MentorHints on real-world Java Full Stack development. Ready to contribute from day one.
+      </p>
+      <div class="availability">
+        <span class="dot"></span>
+        Actively looking — immediate joiner · Open to relocation
+      </div>
+      <br>
+      <div class="hero-btns">
+        <a class="btn-primary" href="mailto:vinothvino0518@gmail.com">📧 Email Me</a>
+        <a class="btn-outline" href="https://linkedin.com/in/vinothkumar0509" target="_blank">LinkedIn ↗</a>
+        <a class="btn-outline" href="https://github.com/Vinothkumar0509" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div>
+          <div class="stat-num">8.57</div>
+          <div class="stat-label">CGPA — Panimalar Engineering College</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⚙️</div>
+        <div>
+          <div class="stat-num">6 mo</div>
+          <div class="stat-label">Java Full Stack Course + Internship @ MentorHints</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🚀</div>
+        <div>
+          <div class="stat-num">2</div>
+          <div class="stat-label">Production-style projects on GitHub</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⏱️</div>
+        <div>
+          <div class="stat-num">&lt;5s</div>
+          <div class="stat-label">API response — AI Resume Analyzer pipeline</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY HIRE ME -->
+<section id="why">
+  <div class="section-inner">
+    <div class="section-eyebrow">// why_hire_me</div>
+    <h2 class="section-title">Why I stand out</h2>
+    <p class="section-sub">What a recruiter sees in the first 30 seconds — and what holds up in a technical interview.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🧠</div>
+        <div class="why-title">Real NLP implementation</div>
+        <div class="why-desc">Built TF-IDF, Cosine Similarity, Jaccard, and Levenshtein from scratch in Java — not just calling an API.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏗️</div>
+        <div class="why-title">Microservices architecture</div>
+        <div class="why-desc">Designed and deployed 5 independent services with Eureka, API Gateway, and OpenFeign — enterprise-grade patterns as a fresher.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📐</div>
+        <div class="why-title">Clean code discipline</div>
+        <div class="why-desc">Every project follows Controller → Service → Repository layering, global exception handling, and SLF4J logging.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <div class="why-title">Metrics-driven results</div>
+        <div class="why-desc">~70% reduction in manual screening effort. 4-component weighted scoring system. Sub-5-second ML pipeline — numbers, not buzzwords.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">Immediate joiner</div>
+        <div class="why-desc">No notice period. Open to Chennai, remote, or relocation. Available for technical rounds any time.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔗</div>
+        <div class="why-title">Everything on GitHub</div>
+        <div class="why-desc">Code is public, documented, and verifiable. No vague project descriptions — you can read the actual implementation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-eyebrow">// tech_stack</div>
+    <h2 class="section-title">Skills dashboard</h2>
+    <p class="section-sub">Tools and technologies I've used in real projects — not just listed for ATS.</p>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="skill-cat-title">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">Java 8+</span>
+          <span class="skill-tag hot">Core Java</span>
+          <span class="skill-tag">OOP</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Frameworks</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">Spring Boot</span>
+          <span class="skill-tag hot">Spring Cloud</span>
+          <span class="skill-tag">Spring MVC</span>
+          <span class="skill-tag">Spring Data JPA</span>
+          <span class="skill-tag">Hibernate ORM</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Microservices</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">API Gateway</span>
+          <span class="skill-tag hot">Eureka Discovery</span>
+          <span class="skill-tag hot">OpenFeign</span>
+          <span class="skill-tag">Circuit Breaker</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Databases</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">PostgreSQL</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">JDBC</span>
+          <span class="skill-tag">DBeaver</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">API & Testing</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">RESTful APIs</span>
+          <span class="skill-tag">JUnit</span>
+          <span class="skill-tag hot">Postman</span>
+          <span class="skill-tag hot">Swagger/OpenAPI</span>
+          <span class="skill-tag">Exception Handling</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Tools & concepts</div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">Git/GitHub</span>
+          <span class="skill-tag">Maven</span>
+          <span class="skill-tag">IntelliJ IDEA</span>
+          <span class="skill-tag">Lombok</span>
+          <span class="skill-tag">Agile/Scrum</span>
+          <span class="skill-tag">DSA</span>
+          <span class="skill-tag">MVC Pattern</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-eyebrow">// work_experience</div>
+    <h2 class="section-title">Internship experience</h2>
+    <p class="section-sub">6 months of hands-on Java Full Stack development in a real company environment.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-title">Java Full Stack Training & Internship</div>
+            <div class="tl-company">MentorHints Software Solutions Pvt. Ltd. · Chennai</div>
+          </div>
+          <div class="tl-date">Oct 2025 – Apr 2026</div>
+        </div>
+        <div style="display:flex;gap:8px;margin:6px 0 10px;flex-wrap:wrap">
+          <span style="font-size:11px;background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.25);color:var(--teal);padding:2px 10px;border-radius:4px;font-family:'IBM Plex Mono',monospace">📚 6-month Java Full Stack Course</span>
+          <span style="font-size:11px;background:rgba(74,158,255,0.08);border:1px solid rgba(74,158,255,0.25);color:#4a9eff;padding:2px 10px;border-radius:4px;font-family:'IBM Plex Mono',monospace">🏢 1-month Internship</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Built an AI Resume Analyzer (Spring Boot + NLP) accepting PDF/DOCX/TXT — 10-step ML pipeline via Apache Tika returning structured JSON in under 5 seconds.</li>
+          <li>Built an Employee Management Microservices System with API Gateway, Eureka, Feign Client, and Config Server for scalable inter-service communication.</li>
+          <li>Applied layered Controller → Service → Repository architecture across all projects with global exception handling, SLF4J logging, and MIME-type validation.</li>
+          <li>Worked in Agile environment with code reviews and Git/GitHub version control throughout the training period.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-eyebrow">// projects</div>
+    <h2 class="section-title">Featured projects</h2>
+    <p class="section-sub">Both live on GitHub — public code, real architecture, verifiable results.</p>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-title">AI-Powered Resume Analyzer</div>
+          <div class="proj-year">2026</div>
+        </div>
+        <div class="proj-metric">⚡ ~70% screening effort reduced</div>
+        <div class="proj-tech">
+          <span>Spring Boot</span><span>Apache Tika</span><span>TF-IDF</span><span>Cosine Similarity</span><span>Jaccard</span><span>PostgreSQL</span>
+        </div>
+        <ul class="proj-bullets">
+          <li>REST API accepting PDF/DOCX/TXT + job description — runs 10-step ML pipeline to structured JSON in &lt;5s.</li>
+          <li>4-component weighted scoring: Jaccard+Levenshtein (35%), Cosine (30%), Experience (20%), Keywords (15%).</li>
+          <li>5-tier classification: Highly Recommended → Not Recommended with modular, logged architecture.</li>
+        </ul>
+        <a class="proj-link" href="https://github.com/Vinothkumar0509/Resume-AI-Analyzer" target="_blank">github.com/Vinothkumar0509/Resume-AI-Analyzer ↗</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-title">E-Commerce Microservices App</div>
+          <div class="proj-year">2026</div>
+        </div>
+        <div class="proj-metric">🏗️ 5 independent services</div>
+        <div class="proj-tech">
+          <span>Spring Cloud</span><span>Eureka</span><span>API Gateway</span><span>OpenFeign</span><span>PostgreSQL</span><span>Hibernate</span>
+        </div>
+        <ul class="proj-bullets">
+          <li>5 microservices (Product, Order, Payment, API Gateway, Service Registry) with isolated PostgreSQL databases.</li>
+          <li>Eureka dynamic service discovery eliminates hardcoded URLs; Spring Cloud Gateway handles unified routing.</li>
+          <li>OpenFeign declarative inter-service calls with @Transactional order-payment flow using Spring Data JPA.</li>
+        </ul>
+        <a class="proj-link" href="https://github.com/Vinothkumar0509/Microservices_Demo" target="_blank">github.com/Vinothkumar0509/Microservices_Demo ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION & CERTS -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-eyebrow">// education_&_certifications</div>
+    <h2 class="section-title">Education & certifications</h2>
+    <p class="section-sub">Academic foundation backed by industry-recognized credentials.</p>
+    <div class="edu-cert-grid">
+      <div class="edu-card">
+        <div class="edu-degree">B.E. — Computer and Communication Engineering</div>
+        <div class="edu-school">Panimalar Engineering College, Chennai</div>
+        <div class="edu-detail">2020 – 2024 · Anna University</div>
+        <div class="edu-cgpa">8.57 / 10.0 CGPA</div>
+      </div>
+      <div>
+        <div class="cert-list">
+          <div class="cert-item">
+            <div class="cert-badge">🏢</div>
+            <div>
+              <div class="cert-name">Fullstack Developer Internship</div>
+              <div class="cert-issuer">MentorHints Software Solutions Pvt. Ltd.</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-badge">☁️</div>
+            <div>
+              <div class="cert-name">Java Full Stack Development</div>
+              <div class="cert-issuer">Simplilearn</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-badge">🌐</div>
+            <div>
+              <div class="cert-name">Cloud Computing Fundamentals</div>
+              <div class="cert-issuer">TCS iON</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-badge">🎨</div>
+            <div>
+              <div class="cert-name">Web Design Internship</div>
+              <div class="cert-issuer">AICL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CAREER GOALS -->
+<section id="goals">
+  <div class="section-inner">
+    <div class="section-eyebrow">// career_goals</div>
+    <h2 class="section-title">Where I'm headed</h2>
+    <p class="section-sub">Short-term focus, long-term vision — aligned with industry demand.</p>
+    <div class="goals-grid">
+      <div class="goal-card">
+        <div class="goal-timeframe">0–6 months</div>
+        <div class="goal-text">Land a Java Backend Developer role. Contribute to Spring Boot microservices in a real production environment.</div>
+      </div>
+      <div class="goal-card">
+        <div class="goal-timeframe">6–18 months</div>
+        <div class="goal-text">Gain hands-on AWS and Docker experience. Add CI/CD pipelines and Spring Security to my production skillset.</div>
+      </div>
+      <div class="goal-card">
+        <div class="goal-timeframe">2–3 years</div>
+        <div class="goal-text">Become a senior backend engineer owning distributed systems design, leading feature development, and mentoring juniors.</div>
+      </div>
+      <div class="goal-card">
+        <div class="goal-timeframe">Long term</div>
+        <div class="goal-text">Architect scalable, cloud-native enterprise systems. Contribute to open source Java/Spring ecosystem projects.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow">// contact</div>
+    <h2 class="section-title">Let's connect</h2>
+    <p class="section-sub">Immediate joiner · Open to relocation · Responds within 24 hours</p>
+
+    <div class="contact-hero">
+      <a class="contact-big-email" href="mailto:vinothvino0518@gmail.com">
+        📧 vinothvino0518@gmail.com
+      </a>
+      <br>
+      <div class="contact-row">
+        <a class="contact-pill" href="tel:+916382507770">
+          <span class="contact-pill-icon">📱</span> +91 63825 07770
+        </a>
+        <a class="contact-pill" href="https://wa.me/916382507770" target="_blank">
+          <span class="contact-pill-icon">💬</span> WhatsApp
+        </a>
+        <a class="contact-pill" href="https://linkedin.com/in/vinothkumar0509" target="_blank">
+          <span class="contact-pill-icon">🔗</span> LinkedIn
+        </a>
+        <a class="contact-pill" href="https://github.com/Vinothkumar0509" target="_blank">
+          <span class="contact-pill-icon">⌨️</span> GitHub
+        </a>
+        <a class="contact-pill" href="https://vinothkumar0509.github.io" target="_blank">
+          <span class="contact-pill-icon">🌐</span> Portfolio
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <a class="contact-cell" href="mailto:vinothvino0518@gmail.com">
+        <span class="contact-cell-icon">📧</span>
+        <span class="contact-cell-label">Email</span>
+        <span class="contact-cell-value">vinothvino0518@gmail.com</span>
+      </a>
+      <a class="contact-cell" href="tel:+916382507770">
+        <span class="contact-cell-icon">📱</span>
+        <span class="contact-cell-label">Phone</span>
+        <span class="contact-cell-value">+91 63825 07770</span>
+      </a>
+      <a class="contact-cell" href="https://wa.me/916382507770" target="_blank">
+        <span class="contact-cell-icon">💬</span>
+        <span class="contact-cell-label">WhatsApp</span>
+        <span class="contact-cell-value">+91 63825 07770</span>
+      </a>
+      <a class="contact-cell" href="https://linkedin.com/in/vinothkumar0509" target="_blank">
+        <span class="contact-cell-icon">🔗</span>
+        <span class="contact-cell-label">LinkedIn</span>
+        <span class="contact-cell-value">vinothkumar0509</span>
+      </a>
+      <a class="contact-cell" href="https://github.com/Vinothkumar0509" target="_blank">
+        <span class="contact-cell-icon">⌨️</span>
+        <span class="contact-cell-label">GitHub</span>
+        <span class="contact-cell-value">Vinothkumar0509</span>
+      </a>
+      <a class="contact-cell" href="https://vinothkumar0509.github.io" target="_blank">
+        <span class="contact-cell-icon">🌐</span>
+        <span class="contact-cell-label">Portfolio</span>
+        <span class="contact-cell-value">vinothkumar0509.github.io</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with intention · <span>Vinothkumar S</span> · Java Backend Developer · Chennai, TN · 2026</p>
+</footer>
+
+</body>
+</html>
